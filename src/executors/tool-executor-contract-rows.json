@@ -7,6 +7,48 @@
   },
   "rows": [
     {
+      "env": {
+        "SCALA_WORKSPACE_ROOT": "/tmp"
+      },
+      "args": [
+        "workspace_file",
+        {
+          "op": "write",
+          "path": "../escape.txt",
+          "content": "x"
+        }
+      ],
+      "note": "The refusal is LEXICAL, so it fires whatever the root is — which is why this is a plain call and not a step in the round trip. A write that escaped would land outside the workspace with the operator's own privileges; the message names the path and the rule so a caller can see which one it broke.",
+      "expect": {
+        "ok": false,
+        "error": "write refused: '../escape.txt' resolves outside the workspace root"
+      },
+      "export": "executeCodingLocally",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:a-write-outside-the-workspace-is-refused"
+    },
+    {
+      "env": {
+        "SCALA_WORKSPACE_ROOT": "/proc/1/root-not-writable"
+      },
+      "args": [
+        "workspace_file",
+        {
+          "op": "read",
+          "path": "x"
+        }
+      ],
+      "note": "NO ROUTING ELSEWHERE. A root the process cannot write is a refusal, not a fallback to the cwd or the repo — silently operating somewhere other than where the operator pointed is how a coding op edits a file nobody named. expect_error because the read refuses rather than answering.",
+      "export": "executeCodingLocally",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "expect_error": "cannot write",
+      "slug": "tool-executor:an-unowned-workspace-refuses-rather-than-routing-elsewhere"
+    },
+    {
       "args": [
         "a",
         "z",
