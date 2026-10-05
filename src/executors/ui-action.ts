@@ -1,6 +1,6 @@
 /**
  * @system tool-executor
- * @status handwritten — none derivable: this file IS a verb of the executor
+ * @status handwritten
  */
 
 import { getLogger } from "../configure.ts";

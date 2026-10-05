@@ -1,6 +1,6 @@
 /**
  * @system tool-executor
- * @status handwritten — none derivable: the projection is a serve-time concern
+ * @status handwritten
  */
 
 import type { UiActionDescribeConfig } from "../lib/types";
