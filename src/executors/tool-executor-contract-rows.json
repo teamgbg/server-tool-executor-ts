@@ -1,0 +1,486 @@
+{
+  "suite": {
+    "target": "src/executors/tool-executor-contract-rows.test.ts",
+    "package": "@teamscala/tool-executor",
+    "rows_module": "./tool-executor-contract-rows.json",
+    "describe_label": "@teamscala/tool-executor function_call contracts"
+  },
+  "rows": [
+    {
+      "args": [
+        "a",
+        "z",
+        "q"
+      ],
+      "note": "coding-local.test.ts:53",
+      "label": "a missing old_string refuses",
+      "expect": {
+        "ok": false,
+        "error": "edit refused: 'old_string' does not occur in the file"
+      },
+      "export": "applyExactEdit",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:apply-exact-edit-absent"
+    },
+    {
+      "args": [
+        "a a",
+        "a",
+        "b"
+      ],
+      "note": "coding-local.test.ts:56",
+      "label": "an ambiguous old_string refuses, naming the count",
+      "expect": {
+        "ok": false,
+        "error": "edit refused: 'old_string' occurs 2 times — include enough surrounding context to name exactly one site"
+      },
+      "export": "applyExactEdit",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:apply-exact-edit-ambiguous"
+    },
+    {
+      "args": [
+        "a",
+        "",
+        "b"
+      ],
+      "note": "coding-local.test.ts:59",
+      "label": "an empty old_string refuses",
+      "expect": {
+        "ok": false,
+        "error": "edit requires a non-empty 'old_string'"
+      },
+      "export": "applyExactEdit",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:apply-exact-edit-empty-old"
+    },
+    {
+      "args": [
+        "a",
+        "z",
+        "q"
+      ],
+      "note": "No match is a refusal naming the reason, not a silent write of the new string. A subject that appended on a miss would corrupt a file the caller believed it had edited.",
+      "expect": {
+        "ok": false,
+        "error": "edit refused: 'old_string' does not occur in the file"
+      },
+      "export": "applyExactEdit",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:apply-exact-edit-refuses-a-missing-match"
+    },
+    {
+      "args": [
+        "a a",
+        "a",
+        "b"
+      ],
+      "note": "TWO matches refuse where one would have been applied, and the refusal NAMES THE COUNT. Picking the first would edit a file the caller never described; the count is what lets a caller disambiguate and retry.",
+      "expect": {
+        "ok": false,
+        "error": "edit refused: 'old_string' occurs 2 times in the file"
+      },
+      "export": "applyExactEdit",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:apply-exact-edit-refuses-an-ambiguous-match-by-count"
+    },
+    {
+      "args": [
+        "a",
+        "",
+        "b"
+      ],
+      "note": "An empty old_string occurs everywhere and nowhere; the exact-count rule would call it ambiguous. It is refused as absent, and a subject that treated \"\" as a match-everywhere would rewrite the whole file.",
+      "expect": {
+        "ok": false,
+        "error": "edit refused: 'old_string' does not occur in the file"
+      },
+      "export": "applyExactEdit",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:apply-exact-edit-refuses-an-empty-old-string"
+    },
+    {
+      "args": [
+        "x = 1; y = 2;",
+        "y = 2",
+        "y = 3"
+      ],
+      "note": "The edit is EXACT: the old string, matched once, replaced once. Every other member of the file survives byte for byte, which is the whole contract — a codemod that reflowed the line would pass a weaker row and break the caller's diff.",
+      "expect": {
+        "ok": true,
+        "updated": "x = 1; y = 3;"
+      },
+      "export": "applyExactEdit",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:apply-exact-edit-replaces-a-unique-match-once"
+    },
+    {
+      "args": [
+        "x = 1; y = 2;",
+        "y = 2",
+        "y = 3"
+      ],
+      "note": "coding-local.test.ts:50",
+      "label": "a unique match is replaced once",
+      "expect": {
+        "ok": true,
+        "updated": "x = 1; y = 3;"
+      },
+      "export": "applyExactEdit",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:apply-exact-edit-unique"
+    },
+    {
+      "args": [
+        "codemod"
+      ],
+      "note": "codemod executes here, one row per member of the set so a row that added a fourth name fails rather than passing a set that grew.",
+      "expect": true,
+      "export": "isCodingCommand",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:codemod-is-a-coding-command"
+    },
+    {
+      "args": [
+        "/ws",
+        "/etc/passwd"
+      ],
+      "note": "coding-local.test.ts:29",
+      "label": "an absolute path outside the root is refused",
+      "expect": null,
+      "export": "containedAbs",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:contained-abs-absolute-outside"
+    },
+    {
+      "args": [
+        "/ws/",
+        "/ws"
+      ],
+      "note": "The root is contained by itself, and the trailing slash on the root does not change that. A prefix test using startsWith without normalising would accept `/ws-evil` as well; this row pins the normalisation the others depend on.",
+      "expect": "/ws",
+      "export": "containedAbs",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:contained-abs-accepts-the-root-itself"
+    },
+    {
+      "args": [
+        "/ws",
+        "repo/src/../lib/b.ts"
+      ],
+      "note": "coding-local.test.ts:26",
+      "label": "a dot-dot that stays inside resolves",
+      "expect": "/ws/repo/lib/b.ts",
+      "export": "containedAbs",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:contained-abs-inner-dotdot"
+    },
+    {
+      "args": [
+        "/ws",
+        "repo/../../etc/passwd"
+      ],
+      "note": "coding-local.test.ts:23",
+      "label": "a dot-dot that escapes from inside is refused",
+      "expect": null,
+      "export": "containedAbs",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:contained-abs-inner-escape"
+    },
+    {
+      "args": [
+        "/ws",
+        "repo/src/a.ts"
+      ],
+      "note": "Containment is LEXICAL, resolved against the root and checked for escape — never a filesystem probe. That is the property the next rows pin: a path that escapes is refused whether or not it exists, so the check cannot be satisfied by a file happening to be there.",
+      "expect": "/ws/repo/src/a.ts",
+      "export": "containedAbs",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:contained-abs-keeps-a-relative-path-inside"
+    },
+    {
+      "args": [
+        "/ws",
+        "../etc/passwd"
+      ],
+      "note": "coding-local.test.ts:22",
+      "label": "a leading dot-dot that escapes is refused",
+      "expect": null,
+      "export": "containedAbs",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:contained-abs-parent-escape"
+    },
+    {
+      "args": [
+        "/ws",
+        "/etc/passwd"
+      ],
+      "note": "An absolute path is judged against the root, not accepted because it is absolute. Joining it would produce /ws/etc/passwd — inside the workspace, pointing at a file that is not there, which is how an absolute read turns into a write.",
+      "expect": null,
+      "export": "containedAbs",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:contained-abs-refuses-an-absolute-path-outside"
+    },
+    {
+      "args": [
+        "/ws",
+        "repo/../../etc/passwd"
+      ],
+      "note": "Same escape, reached through a subdirectory — the shape a real relative path has. A guard that only checked a leading `../` passes this one, so the row that matters is the one that pops back out of a nested path.",
+      "expect": null,
+      "export": "containedAbs",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:contained-abs-refuses-an-escape-from-a-deeper-path"
+    },
+    {
+      "args": [
+        "/ws",
+        "../etc/passwd"
+      ],
+      "note": "THE TRAVERSAL ROW. `..` out of the root is null, not a path. Resolving first and asking the filesystem afterwards would pass this whenever /etc/passwd happens to be unreadable and fail whenever it is readable — the check has to be lexical to be a check.",
+      "expect": null,
+      "export": "containedAbs",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:contained-abs-refuses-an-escaping-dot-dot"
+    },
+    {
+      "args": [
+        "/ws",
+        "repo/src/a.ts"
+      ],
+      "note": "coding-local.test.ts:18",
+      "label": "a relative path stays inside the root",
+      "expect": "/ws/repo/src/a.ts",
+      "export": "containedAbs",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:contained-abs-relative-inside"
+    },
+    {
+      "args": [
+        "/ws",
+        "repo/src/../lib/b.ts"
+      ],
+      "note": "`..` is not a refusal token; it is path arithmetic. A subject that refused every dot-dot would break this ordinary shape, and a row that only asserted refusals could not tell the two apart.",
+      "expect": "/ws/repo/lib/b.ts",
+      "export": "containedAbs",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:contained-abs-resolves-a-dot-dot-that-stays-inside"
+    },
+    {
+      "args": [
+        "/ws/",
+        "/ws"
+      ],
+      "note": "coding-local.test.ts:32",
+      "label": "the root itself is contained",
+      "expect": "/ws",
+      "export": "containedAbs",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:contained-abs-root-itself"
+    },
+    {
+      "args": [
+        "codemod"
+      ],
+      "note": "coding-local.test.ts:66",
+      "label": "codemod executes in-process",
+      "expect": true,
+      "export": "isCodingCommand",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:is-coding-command-codemod"
+    },
+    {
+      "args": [
+        "scala_tools_exec"
+      ],
+      "note": "coding-local.test.ts:67",
+      "label": "scala_tools_exec executes in-process",
+      "expect": true,
+      "export": "isCodingCommand",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:is-coding-command-scala-tools-exec"
+    },
+    {
+      "args": [
+        "spawn_agent_tab"
+      ],
+      "note": "coding-local.test.ts:68",
+      "label": "spawn_agent_tab does not execute in-process",
+      "expect": false,
+      "export": "isCodingCommand",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:is-coding-command-spawn-refused"
+    },
+    {
+      "args": [
+        "workspace_file"
+      ],
+      "note": "coding-local.test.ts:65",
+      "label": "workspace_file executes in-process",
+      "expect": true,
+      "export": "isCodingCommand",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:is-coding-command-workspace-file"
+    },
+    {
+      "args": [
+        "scala_tools_exec"
+      ],
+      "note": "scala_tools_exec executes here. The four isCodingCommand rows together are the set; each is separate so the failure names WHICH name moved.",
+      "expect": true,
+      "export": "isCodingCommand",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:scala-tools-exec-is-a-coding-command"
+    },
+    {
+      "args": [
+        "a\nb\nc\nd\n",
+        2,
+        2
+      ],
+      "note": "offset is 1-BASED, so offset 2 is the second line, and limit bounds the result. `truncated` is the fact a caller needs to ask for more: a slice that silently drops the tail reads exactly like a file that ends there.",
+      "expect": {
+        "text": "b\nc",
+        "total": 4,
+        "truncated": true
+      },
+      "export": "sliceLines",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:slice-lines-offsets-from-one-and-bounds"
+    },
+    {
+      "args": [
+        "a\nb",
+        9,
+        5
+      ],
+      "note": "coding-local.test.ts:44",
+      "label": "an offset past the end yields nothing and is not truncated",
+      "expect": {
+        "text": "",
+        "total": 2,
+        "truncated": false
+      },
+      "export": "sliceLines",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:slice-lines-past-end"
+    },
+    {
+      "args": [
+        "a\nb",
+        9,
+        5
+      ],
+      "note": "An offset past the end yields nothing and is NOT truncated — there was nothing to cut. Reporting truncated here would send a caller paging forward through a file it has already read to the end.",
+      "expect": {
+        "text": "",
+        "total": 2,
+        "truncated": false
+      },
+      "export": "sliceLines",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:slice-lines-past-the-end-is-empty-not-truncated"
+    },
+    {
+      "args": [
+        "a\nb\nc\nd\n",
+        2,
+        2
+      ],
+      "note": "coding-local.test.ts:38",
+      "label": "offset is 1-based and limit bounds the slice",
+      "expect": {
+        "text": "b\nc",
+        "total": 4,
+        "truncated": true
+      },
+      "export": "sliceLines",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:slice-lines-window"
+    },
+    {
+      "args": [
+        "spawn_agent_tab"
+      ],
+      "note": "The negative case, as its own row. spawn_agent_tab is a REAL bus name that this layer must refuse, so the row is not a check on a misspelling — it is the boundary between what executes in-process and what the supervisor owns.",
+      "expect": false,
+      "export": "isCodingCommand",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:spawn-agent-tab-is-not-a-coding-command"
+    },
+    {
+      "args": [
+        "workspace_file"
+      ],
+      "note": "THE BUS-NAME SET. workspace_file, codemod and scala_tools_exec execute in-process here; spawn_agent_tab does not — it opens a tab, which is the supervisor's job. One row per name, and the negative one below is the half that matters: a set that answered true for everything would claim to execute a command it cannot.",
+      "expect": true,
+      "export": "isCodingCommand",
+      "module": "src/executors/coding-local.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:the-coding-commands-are-the-three-bus-names"
+    }
+  ]
+}
