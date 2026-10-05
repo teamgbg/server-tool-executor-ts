@@ -41,11 +41,14 @@
         }
       ],
       "note": "NO ROUTING ELSEWHERE. A root the process cannot write is a refusal, not a fallback to the cwd or the repo — silently operating somewhere other than where the operator pointed is how a coding op edits a file nobody named. expect_error because the read refuses rather than answering.",
+      "expect": {
+        "ok": false,
+        "error": "this process cannot write /proc/1/root-not-writable; the coding layer runs only in the engine of the lane that holds the repositories, never from another lane or a cloud caller"
+      },
       "export": "executeCodingLocally",
       "module": "src/executors/coding-local.ts",
       "package": "@teamscala/tool-executor",
       "suite_type": "function_call",
-      "expect_error": "cannot write",
       "slug": "tool-executor:an-unowned-workspace-refuses-rather-than-routing-elsewhere"
     },
     {
