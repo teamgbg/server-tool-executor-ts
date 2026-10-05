@@ -1,14 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit edit directly
- *
- * `where`-clause manipulators for ORPC tool dispatch. injectScopeFilter
- * stamps the authenticated org/user filters onto a where; addScopeToWhere
- * wraps that for the prepare-args path; applyFilterTransform applies a
- * per-field operator transform (gte/lte, boolean coercion, date
- * normalisation). orpc-args.ts uses scope + filter together per request,
- * so they're operationally one canonical "where transformer" unit.
  */
 
 const logger = getLogger();

@@ -1,32 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit edit directly
- *
- * orpc.ts — dispatch one generated oRPC procedure on behalf of a tool call:
- * resolve the namespace, prepare and scope the args, run the gates that must
- * refuse before any statement, then call the procedure and post-process what
- * it returns.
- *
- * A WRITE OPENS ITS OWN RLS TRANSACTION, AND THE CALLER RIDES IT. This file
- * used to call `setRlsContext`/`resetRlsContext`, which set the RLS context on
- * the shared module pool and then queried the pool — two different
- * connections, so the context landed on whichever was free rather than the one
- * the write used, and the attribution could diverge from the write it
- * attributed. `withRlsTransaction` borrows ONE connection, BEGINs, issues the
- * `SET LOCAL` context on it, and returns a scope whose `tx` and `models` are
- * both bound to THAT connection.
- *
- * The oRPC obstacle is that `createCaller` binds the clients into a context
- * object at construction, so a captured `method` cannot be re-pointed at the
- * transaction afterwards. The context is therefore a FUNCTION of the client
- * pair (`contextFor`), and the write builds a SECOND caller from the scope —
- * the same rebind the generated middleware performs through
- * `opt.next({ context })`. A read needs none of this and stays on the pool.
- *
- * There is no reset arm, and none is needed: `SET LOCAL` is discarded when the
- * transaction ends, so a stale pane identity on a pooled connection is
- * unrepresentable rather than merely avoided.
  */
 import { createRouterClient as createCaller, type AnyRouter } from "@orpc/server";
 import type { PrismaClient } from "@teamscala/db/client";

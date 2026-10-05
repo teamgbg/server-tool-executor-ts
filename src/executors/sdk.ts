@@ -1,12 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit edit directly
- *
- * SDK executor — loads a @teamscala/* adapter package at call time, creates
- * the client, resolves the function by name, calls it, returns the result.
- * Client-option resolution: ./sdk-client-options.ts (shared with the
- * messaging recorder — static import, never dynamic).
  */
 
 import { createRequire } from "node:module";

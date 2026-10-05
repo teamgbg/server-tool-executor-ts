@@ -1,9 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit edit directly
- *
- * Loads operator-tunable cache cadences for tool execution from the registry.
  */
 
 import { loadRegistryConfig } from "@teamscala/db/registry/load-config";

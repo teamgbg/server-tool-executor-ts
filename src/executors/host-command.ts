@@ -1,28 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit edit directly
- *
- * host_command executor — the NATIVE dispatch path. A tool whose executor_key
- * is 'host_command' executes where the code is: the coding commands
- * (workspace_file, codemod, scala_tools_exec) run in-process against the
- * workspace this engine holds (coding-local.ts), per
- * coding-layer-runs-in-the-engine-not-through-mcp.
- *
- * The @teamscala/host-command-bus row-queue path is RETIRED (the Rust bus
- * consumer is deleted; the queue has no claimant, so a written row hangs to
- * timeout with no handler — the exact "offered beyond the capability" failure
- * offered-is-derived prohibits). Any non-coding command is REFUSED as data —
- * { ok: false, error } naming the retirement and the native verbs — never
- * enqueued, never thrown: a refusal is an outcome the caller reads, and
- * throwing would dress a retired capability as a dispatch error.
- *
- * executor_config: { command: string, default_args?: Record<string, unknown> }
- *   - command: the native command name (e.g. "workspace_file"). Required;
- *     errors loudly if absent.
- *   - default_args: merged under the caller's args (caller wins), so `search`
- *     still arrives as pattern_search without the caller knowing the
- *     handler's required fields.
  */
 
 import {

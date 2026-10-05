@@ -1,35 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit edit directly
- *
- * resolve-caller-user.ts — the multi-tenant DECISION: given an identity that
- * has now REACHED this point (x-caller-user-id shipped in @teamscala/os,
- * read at every context site in mcp-multi-session, stamped forward-only in
- * mcp-client-pool, deployed on scala-mcp), decide which organisation a named
- * caller may read and whether it is super-admin. The generated
- * `protectedProcedure` then org-scopes every read to ctx.orgId UNLESS the
- * resolved user is super-admin, so this one decision is what separates a
- * full-access system/operator call from an org-scoped per-org agent call.
- *
- * The five invariants (2026-08-02 identity work, second half):
- *  (1) the platform SYSTEM sentinel stays super-admin, unchanged;
- *  (2) a named caller asserting an org it is NOT a member of is REFUSED —
- *      never silently redirected (answering an explicit org-B request with
- *      org-A data is worse than an error);
- *  (3) a named caller with no org claim resolves its OWN membership;
- *  (4) an UNKNOWN user id is REFUSED;
- *  (5) isSuperAdmin derives from the STORED role (user.role='super_admin'),
- *      never from a header — nothing populates ctx.isAdmin, so the operator's
- *      Doris/Joe bypass is wired to the role record here, and fail-closed
- *      stays the default for everyone else.
- *
- * Organisation resolution reuses resolveUserOrganisationId (@teamscala/db,
- * user-organisations.ts) — extend-catalog-before-bespoke: it returns a
- * preferred org ONLY when a (userId, organisationId) member row exists, else
- * it falls back to the caller's own membership. So for an ASSERTED org,
- * `resolved !== asserted` is the non-membership signal (refuse); for NO claim,
- * the same call with no preferred arg resolves the caller's own org.
  */
 
 /**

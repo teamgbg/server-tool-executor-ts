@@ -1,12 +1,6 @@
 /**
  * @system mcp-infrastructure
  * @status handwritten
- * @edit edit directly
- *
- * Input-guard helpers for the ORPC argument pipeline: composite-identity
- * completeness, forbidden-value rejection (recursive, path-reporting), and
- * the where-constraint AND-join. Pure — the pipeline phases in
- * prepare-args.ts and final-args-by-method.ts consume them.
  */
 
 export function requireCompleteIdentity(

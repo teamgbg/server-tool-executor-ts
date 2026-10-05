@@ -1,14 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit edit directly
- *
- * Postgres full-text-search registry: discovers which tables are searchable
- * (a `search_content_tsv` tsvector column with a GIN index, maintained by
- * triggers / generated columns) by querying information_schema, with a
- * 10-minute in-memory cache to avoid repeated DB hits during tool execution.
- * Tracks per-table whether an `organisation_id` column exists so the search
- * lane can apply tenant scoping only where the column is real.
  */
 
 import { getLogger } from "../configure.ts";

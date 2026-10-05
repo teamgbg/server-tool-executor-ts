@@ -1,14 +1,6 @@
 /**
  * @system mcp-infrastructure
  * @status handwritten
- * @edit edit directly
- *
- * Builds Prisma query arguments for ORPC tools in mcp-ai-chat-system from AI inputs.
- * Applies scope filters, context limits, flat field extraction, and filter transforms.
- * Ensures secure, bounded database access with org/user isolation.
- *
- * Sibling units: orpc-args-where (reserved keys + filter lifting),
- * orpc-bulk-gate (the strict updateMany/deleteMany namespace gate).
  */
 
 /**

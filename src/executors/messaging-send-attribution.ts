@@ -1,12 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit edit directly
- *
- * Outbound-send ATTRIBUTION: resolving which sending device carried a send
- * and which agent's thread it belongs on. Split from the recorder as its own
- * unit — the 2026-08-23 incident lived exactly at this seam (14 WhatsApp
- * sends landed, none attributed, cause swallowed by a bare catch).
  */
 
 import { getLogger, type InjectedServerClient } from "../configure.ts";

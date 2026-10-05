@@ -1,12 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit edit directly
- *
- * SDK adapter client-option resolution — the ONE module the sdk executor
- * and the messaging recorder both resolve a client through. The recorder
- * once dynamically imported its sibling and got `undefined` for an
- * unexported member (2026-08-23: every send landed unattributed).
  */
 
 import type { RegistryKeyFor } from "@teamscala/db/registry/generated/registry-type";

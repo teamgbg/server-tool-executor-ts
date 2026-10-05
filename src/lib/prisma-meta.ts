@@ -1,9 +1,6 @@
 /**
  * @system mcp-infrastructure
  * @status handwritten
- * @edit edit directly
- *
- * Prisma datamodel introspection utilities for validating column existence before the ORPC executor injects audit or scope fields into queries.
  */
 
 /**

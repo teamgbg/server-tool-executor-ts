@@ -1,14 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit edit directly
- *
- * Default result limits for MCP tool calls. When an agent calls a list
- * operation through the four meta-tools without specifying `take` or `fields`,
- * these defaults apply — keeping every tool call under ~5,000 tokens.
- *
- * This is `db-bytes-are-a-budget` applied to the MCP tool surface.
- * An agent that needs full detail passes `fields: [...]` or `take: N`.
  */
 
 /** Default row count when the caller doesn't specify `take`. */

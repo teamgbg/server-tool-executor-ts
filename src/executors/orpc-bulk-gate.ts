@@ -1,21 +1,6 @@
 /**
  * @system mcp-infrastructure
  * @status handwritten
- * @edit edit directly
- *
- * STRICT NAMESPACE GATE for the many-row mutations (updateMany/deleteMany).
- *
- * THE 2026-08-16 INCIDENT: a caller ran `work_items update_many` with flat
- * top-level `kind`, `title` and `organisation_id`, believing they were the
- * FILTER. `organisation_id` satisfied the old "explicit where" gate while
- * `kind`+`title` fell through to the flat-inference SET-VALUES path — one
- * statement rewrote 6,890 titles org-wide and reported success. On a flat
- * argument surface the same key is a filter for list, a set-value for update,
- * and indeterminate for a bulk mutation: that ambiguity is not interpretable,
- * so it is made UNREPRESENTABLE. A bulk mutation accepts exactly `where`
- * (filter object) and, for updateMany, `data` (set-values object) — every
- * other top-level key is refused with the correct shape named
- * (`friction-is-a-stop-condition`).
  */
 
 export function isObjectWithKeys(value: unknown): value is Record<string, unknown> {

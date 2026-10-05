@@ -1,10 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit edit directly
- *
- * Derives comment authorship from the authenticated caller at the ORPC write
- * boundary. Comment callers never choose the sender fields.
  */
 
 import type { ExecutionContext } from "../lib/types.ts";

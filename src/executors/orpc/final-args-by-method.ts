@@ -1,13 +1,6 @@
 /**
  * @system mcp-infrastructure
  * @status handwritten
- * @edit edit directly
- *
- * Per-method dispatch from cleaned arguments to final Prisma args: one branch
- * per Prisma CRUD vocabulary entry (plus the custom-procedure passthrough),
- * each applying its identity/addressing refusals, scope injection and
- * projection rules. The cleaning half of the pipeline is prepare-args.ts;
- * the shared guards in prepare-args-guard.ts.
  */
 import { injectScopeFilter } from "#tool-executor/lib/scope.ts";
 import { addScopeToWhere } from "#tool-executor/lib/scope.ts";

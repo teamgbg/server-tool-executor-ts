@@ -1,16 +1,6 @@
 /**
  * @system mcp-infrastructure
  * @status handwritten
- * @edit edit directly
- *
- * WHERE-clause extraction for the ORPC arg builders: the reserved-key set and
- * the two filter-lifting passes. extractFlatFilters applies the row's curated
- * flatFilterFields/searchFields (with the organisation_id override rule);
- * liftRemainingColumnFilters lifts any remaining top-level param that is a
- * REAL model column so an undeclared filter is never silently dropped.
- *
- * The builders consuming these live in orpc-args.ts; the bulk-mutation gate
- * in orpc-bulk-gate.ts.
  */
 import { getModelFields } from "../lib/prisma-meta";
 import { setNestedField } from "../lib/scope";

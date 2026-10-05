@@ -1,17 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit edit directly
- *
- * Target enumeration for the many-row mutations (updateMany/deleteMany) —
- * the readback half of `a-mutating-verb-reads-back-what-it-claims`. A bulk
- * verb that reports only `{count: N}` reports a QUANTITY, not its targets:
- * the 2026-08-16 incident was discovered two hours late because the only
- * trace of the 6,890-row rewrite was a success result with a number in it.
- * The executor enumerates the matched key fields BEFORE the statement runs
- * (deleteMany must capture them while the rows still exist) and merges the
- * enumerated identities into the result, capped for the response budget —
- * a count plus the first N identities, never a bare count.
  */
 
 import type { PrismaClient } from "@teamscala/db/client";

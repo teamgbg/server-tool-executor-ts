@@ -1,12 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit edit directly
- *
- * Outbound messaging send recorder: records every successful send of a
- * messagingRecord-opted tool into the SAME unified thread the inbound
- * receiver writes. Attribution: ./messaging-send-attribution.ts. Failure
- * mode: fail-open-noisy — every unrecorded exit lands a durable event row.
  */
 
 import { createRequire } from "node:module";

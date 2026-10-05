@@ -1,12 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit edit directly
- *
- * Resolves the calling CLI's open session at the write boundary, from the
- * launcher-injected session-id candidate the request context carries. The
- * candidate is validated against open `cli_sessions` rows, so a dashboard
- * UUID or an unexpanded template resolves to nothing.
  */
 
 import type { ExecutionContext } from "../lib/types.ts";

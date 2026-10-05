@@ -1,10 +1,6 @@
 /**
  * @system mcp-infrastructure
  * @status handwritten
- * @edit edit directly
- *
- * Argument preparation for ORPC method execution in mcp-ai-chat-system.
- * Validates auth, resolves admin overrides, applies audit fields, and delegates to shared arg builders.
  */
 
 	// `select` is the PRISMA name for a column projection, and this surface calls it `fields`. A caller reaching for `select` is not making a typo — they are

@@ -1,7 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit edit directly
  */
 
 const uuidv7 = () => Bun.randomUUIDv7();

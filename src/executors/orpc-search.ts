@@ -1,11 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit edit directly
- *
- * Search helpers for ORPC tools: Postgres full-text search (websearch_to_tsquery
- * + ts_rank over the trigger-maintained search_content_tsv GIN indexes) plus
- * exact direct-field matches (e.g. phone/email), merged for robust record lookup.
  */
 
 import { createRouterClient as createCaller, type AnyRouter } from "@orpc/server";

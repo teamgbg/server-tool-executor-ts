@@ -1,13 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit edit directly
- *
- * Unified tool dispatch — resolves every tool call to an ORPC procedure
- * (default) or executes sdk:* calls IN-PROCESS (operator ruling 2026-09-02:
- * an sdk tool executing inside scala-mcp loads the installed adapter and
- * calls it directly — never an authenticated HTTP loopback back to its own
- * /mcp).
  */
 
 import { getLogger } from "../configure.ts";

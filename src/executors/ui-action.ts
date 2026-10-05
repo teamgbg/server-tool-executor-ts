@@ -1,43 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten — none derivable: this file IS a verb of the executor
- *   catalog, and the catalog's registration surface is dispatch/dispatch.ts
- *   (no generator owns it, no supplier offers a UI-action payload
- *   projection); the row contract it reads (executor_config on a
- *   tool_definition row) is operator data no transform can emit.
- * @edit edit directly
- *
- * UI-action executor — a row-declared UI surface: resolve the target row
- * through the row's own ORPC procedure, authorize it against the agent that
- * called, and return a payload template interpolated from the resolved row.
- *
- * WHY A FAMILY, NOT A BLOB. Only the row-resolve surfaces ride this family —
- * show_form, show_assessment, and anything that resolves one row by id. The
- * other hand-written chat surfaces are NOT a ui-action shape and must not be
- * deleted on the strength of a comment: read_page returns a DOM snapshot
- * threaded from the request body (no row), browser_action passes the AI's
- * descriptor through unchanged (no row), highlight targets by selector/text
- * with a parent-chain walk (no id arg), show_website echoes a page id with no
- * resolvable page model. Verified 2026-09-29 against app-gpt-bun's schema: it
- * has forms + assessments + assessment_responses, NO documents model, NO page
- * model — do not assume a resolve procedure exists until you have read the
- * host's generated router. ExecutionContext is identity-only (scala-os
- * contracts/mcp.ts), so no executor can receive those lists — and that is the
- * point: the build-time hand-in is the thing being deleted. Scope is
- * re-DERIVED here from context.agentId against the agent row's own *_ids, so
- * the row carries the fact and this file carries none of it.
- *
- * PER-SLUG BEHAVIOUR IS ROW DATA. The action verb, the procedure, the id arg,
- * the id field and the payload template all live in executor_config. Adding a
- * seventh surface is a registry row, not a case label here. `resolve` is
- * optional: a surface the CLIENT resolves (show_document, show_website — the AI
- * supplies an id, the client looks it up in its own page state) is an echo row
- * with no server entity and nothing to leak, so the row declares the action and
- * the payload and the id returns through {arg.<name>}.
- *
- * FAILS CLOSED, NEVER DEGRADES. An id the agent does not hold, a missing
- * agentId, a missing config field: each answers "not found" (or a message
- * naming the row field) rather than resolving the row anyway.
  */
 
 import { getLogger } from "../configure.ts";

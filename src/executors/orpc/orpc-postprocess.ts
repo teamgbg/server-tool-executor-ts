@@ -1,7 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit edit directly
  */
 
 import type { PrismaClient } from "@teamscala/db/client";

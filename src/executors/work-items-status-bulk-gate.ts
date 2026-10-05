@@ -1,8 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit the work_items status-only bulk update gate — refuses an updateMany
- *   whose where clause is status alone with no blast-radius declaration.
  */
 
 /**

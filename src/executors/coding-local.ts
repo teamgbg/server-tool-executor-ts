@@ -1,28 +1,6 @@
 /**
  * @system tool-executor
  * @status handwritten
- * @edit edit directly
- *
- * The coding layer executed IN THE ENGINE, where the code is.
- *
- * WHY (operator ruling 2026-09-17, and `coding-layer-runs-in-the-engine-not-
- * through-mcp` before it): the five coding tools — read_file, write_file,
- * edit_file, list_files, run_scala_tools — and the two codemod tools were
- * `host_command` rows executed by the host-command-bus consumer. The bus died
- * on 2026-09-09 and the internal fleet lost every way to touch a file. The
- * engine's dev-lane instance already runs AS the dev lane user with the
- * repositories in reach, so the tools execute here, in-process, and no row is
- * written for another process to pick up.
- *
- * The semantics are the bus handler's, carried over verbatim in intent:
- * containment is LEXICAL (a write names a file that may not exist yet, and a
- * symlink inside the tree may point outside it), every write READS ITSELF BACK
- * before reporting success, an edit replaces exactly one occurrence or refuses,
- * and listing/search are ripgrep-backed so the ignore rules are the platform's.
- *
- * OWNERSHIP IS A PRECONDITION, NOT A FALLBACK. A process that cannot write the
- * workspace it names (the prod-lane engine, a cloud caller) is refused with the
- * lane named, never handed a bus row. There is no second path.
  */
 import { accessSync, chmodSync, constants, existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { dirname, isAbsolute } from "node:path";

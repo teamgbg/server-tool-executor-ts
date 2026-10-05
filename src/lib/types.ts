@@ -1,12 +1,6 @@
 /**
  * @system mcp-infrastructure
  * @status handwritten
- * @edit edit directly
- *
- * Core type definitions for the tool executor: discriminated ExecutorConfig
- * (OrpcExecutorConfig | SdkExecutorConfig | UiActionExecutorConfig),
- * EnrichConfig for post-query joins, and ExecutionContext carrying
- * user/org/admin state into each tool call.
  */
 
 // --- Shared fields (common to all executor types) ---
