@@ -3,72 +3,16 @@
  * @status handwritten
  */
 
-/**
- * Compact verbose transcript JSON into plain text to reduce token usage.
- *
- * Fathom transcripts are stored as JSON arrays where each entry repeats the
- * full speaker object (display_name + email) on every line. This accounts for
- * ~53% of the transcript's character count. Converting to plain text like
- * "[00:00:08] Joe Bellissimo: Thank you." reduces tokens by ~67%.
- *
- * Only transforms fields that match the expected transcript structure
- * (array of {speaker: {display_name}, text, timestamp}).
- */
 
-/**
- * Channel/orchestrator-message delivery results (`send_orchestrator_message`)
- * are exempt from size truncation.
- *
- * Contract: a cross-pane channel message renders VERBATIM in the dispatch
- * result regardless of length — the operator reads `delivered_text` + `runId`
- * in full to correlate sends and confirm exactly what landed on the recipient's
- * transcript. These results are operational delivery receipts (typically a few
- * KB), NOT paginated DATA, so applying the array-truncation safeguard to them
- * would clip the very message content the operator needs. The safeguard below
- * still applies to genuinely-huge DATA array results (findMany, etc.).
- */
 
-/**
- * Truncate large array responses to protect AI agent context windows.
- *
- * When a response exceeds MAX_RESPONSE_SIZE, this function:
- * 1. Detects if the response contains a large array (in ORPC wrapper or directly)
- * 2. Truncates the array to fit within the limit
- * 3. Adds a pagination hint so the AI knows how to get more results
- *
- * THE CEILING IS ABSOLUTE, NOT BEST-EFFORT. Shapes with no array to paginate
- * (a single wide row, an irreducible object) used to measure the overage and
- * return the value anyway — measured 2026-09-12 a PA agent hit exactly that
- * shape, 9.5MB reached the model, and the engine refused the turn. A result
- * that cannot be paginated below the ceiling is WITHHELD with an `_oversized`
- * reason naming the size and the narrowing to apply.
- *
- * Channel/orchestrator-message delivery results are exempt (see
- * `isChannelMessageResult`): they carry the message body the operator must see
- * in full and are never paginated.
- *
- * @returns The potentially truncated response with meta info about truncation
- */
 
 import { getLogger } from "../configure.ts";
 import type { DynamicPrismaClient } from "./types";
 
 const logger = getLogger();
 
-/**
- * Context protection limits for response size.
- *
- * MAX_RESPONSE_SIZE: Hard cap on JSON response size (in bytes).
- * If exceeded, arrays are truncated with a pagination hint.
- */
 const MAX_RESPONSE_SIZE = 20 * 1024; // 20KB — ~5,000 tokens backstop (mcp-result-budget)
 
-/**
- * Convert database values into the JSON response contract at one boundary.
- * Postgres bigint columns are returned as JavaScript bigint values by some
- * clients; letting one through makes the transport's later JSON.stringify
- * throw and hides the whole result. IDs and counts stay exact as strings.
- */
 export function normalizeJsonResponse<T>(value: T): T {
 	const serialized = JSON.stringify(value, (_key, child) =>
 		typeof child === "bigint" ? child.toString() : child,
@@ -245,9 +189,6 @@ export function truncateLargeResponse(result: unknown): unknown {
 	return result;
 }
 
-/**
- * Binary search to find max array items that fit within size limit.
- */
 function truncateArrayToFit(arr: unknown[], maxSize: number): unknown[] {
 	let low = 1;
 	let high = arr.length;

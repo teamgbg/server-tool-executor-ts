@@ -35,7 +35,6 @@ export type InjectedAppRouterProvider = () => unknown;
 // `client.<table>.<procedure>(args)`. Local-only view: the real typed shape
 // lives in @teamscala/orpc and cannot be imported here (tier crossing per
 // vertical-dependency-only).
-/** Dynamic model-access view; results are unknown — rows narrowed per call site. */
 export interface InjectedServerClient {
 	[table: string]: {
 		[method: string]: (args?: unknown) => Promise<unknown>;
@@ -49,8 +48,6 @@ export type Prisma = unknown;
 // siblings and arrive via configure() from the boot layer, same as the ORPC
 // types above). The host-command-bus invoker injection that shared this
 // section retired with the bus (2026-09-19).
-/** Local structural view of the caller-identity record the gateway stamps
- *  into AsyncLocalStorage — only the fields tool-executor reads. */
 export interface InjectedCallerInfo {
 	userId?: string | null;
 	organisationId?: string | null;

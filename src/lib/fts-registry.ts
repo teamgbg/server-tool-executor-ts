@@ -16,12 +16,6 @@ export interface SearchableModel {
 let searchableModels: Map<string, SearchableModel> | null = null;
 let nextRefreshAt = 0;
 
-/**
- * Get the map of full-text-searchable table names (tables with a
- * search_content_tsv column). Lazy-loads on first call, refreshes every
- * 10 minutes. Fails open to the previous cache (or empty) — search then
- * degrades to direct/ILIKE matching, never blocks tool execution.
- */
 export async function getSearchableModels(): Promise<
 	Map<string, SearchableModel>
 > {
@@ -63,10 +57,6 @@ export async function getSearchableModels(): Promise<
 	}
 }
 
-/**
- * Full-text-search metadata for a model, or null when the table has no
- * search_content_tsv column (caller falls back to direct/ILIKE matching).
- */
 export async function getFullTextSearchInfo(
 	modelName: string,
 ): Promise<SearchableModel | null> {

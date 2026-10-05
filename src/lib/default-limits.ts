@@ -3,19 +3,6 @@
  * @status handwritten
  */
 
-/** Default row count when the caller doesn't specify `take`. */
-/**
- * Apply default limits to a list call's args. Mutates the args object in-place
- * ONLY when the caller omitted `take` or `fields`. Explicit values are never
- * overridden. Returns whether defaults were applied so the postprocessor can
- * add a pagination hint.
- *
- * @param args The raw args from the MCP tool call
- * @param method The ORPC method (e.g., "list", "findMany")
- * @param availableFields Optional: the columns that exist on this model, used
- *   to filter DEFAULT_FIELDS to only valid columns. If not provided, all
- *   DEFAULT_FIELDS are passed through (the DB will ignore unknown columns).
- */
 
 		// No model info: leave `fields` unset rather than guessing.
 		//
@@ -43,8 +30,6 @@
 
 export const DEFAULT_TAKE = 20;
 
-/** Default column projection when the caller doesn't specify `fields`.
- * Filtered to columns that exist on the model at query time. */
 export const DEFAULT_FIELDS = [
 	"id",
 	"slug",
@@ -58,11 +43,8 @@ export const DEFAULT_FIELDS = [
 ] as const;
 
 export interface DefaultLimitsResult {
-	/** The args object (same reference, possibly mutated). */
 	args: Record<string, unknown>;
-	/** True when a default take was injected (caller didn't specify one). */
 	defaultsApplied: boolean;
-	/** The default take value that was injected, if any. */
 	defaultTake: number | null;
 }
 
@@ -100,14 +82,6 @@ export function applyDefaultLimits(
 	};
 }
 
-/**
- * Wrap a findMany result with a pagination hint when default limits were applied.
- * The agent sees exactly how many results exist and how to get more.
- *
- * Only wraps when `defaultsApplied` is true AND the result looks like an array
- * (the ORPC wrapper or a bare array). Does NOT wrap single-object results or
- * results that already have pagination metadata.
- */
 export function addPaginationHint(
 	result: unknown,
 	defaultTake: number,

@@ -3,18 +3,6 @@
  * @status handwritten
  */
 
-/**
- * The DB surface resolveCallerUser reads: the stored user record (role +
- * existence) and the BetterAuth membership table. resolveUserOrganisationId
- * (@teamscala/db) queries it as `db.member`, but the services that mount
- * tool-executor (scala-mcp et al.) generate their Prisma client by live
- * introspection, which names models by TABLE — so the membership table is
- * exposed as `better_auth_member`, not `member`. resolveCallerUser bridges
- * that (below) by handing resolveUserOrganisationId a `{ member:
- * db.better_auth_member }` view; the delegate, the columns, and the findFirst
- * shape are identical. Declared narrowly so the co-located test mocks exactly
- * these two delegates.
- */
 
 	// (2) + (3) Non-super-admin named caller: resolve through
 	// resolveUserOrganisationId (@teamscala/db) — reuse, not a new resolver.
@@ -62,15 +50,6 @@ export interface ResolvedCallerUser {
 	isSuperAdmin: boolean;
 }
 
-/**
- * Resolve the ORPC router caller-user from the identity context + stored
- * record. Throws (Authorization required: …) on any refusal — matching the
- * lib/auth.ts validateAuth refusal shape, so a refusal surfaces as an error
- * exactly like "X-Organisation-Id header is missing" does. Never returns a
- * user for a caller that has not been verified (a-component-may-not-report-
- * a-state-it-has-not-verified): an anonymous, unknown, or non-member caller
- * is refused rather than handed an org-scoped context it did not earn.
- */
 export async function resolveCallerUser(
 	db: CallerUserDb,
 	ctx: CallerUserContext,

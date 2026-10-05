@@ -19,14 +19,12 @@ import {
 
 const logger = getLogger();
 
-/** Row-owned opt-in: executor_config.messagingRecord = { channel: "whatsapp" }. */
 export interface MessagingRecordConfig {
 	channel: "whatsapp";
 }
 
 export type { SendFacts } from "./messaging-send-attribution.ts";
 
-/** Extract the send facts from the tool args + adapter result. */
 export function extractSendFacts(
 	args: Record<string, unknown>,
 	result: unknown,
@@ -51,12 +49,10 @@ export function extractSendFacts(
 	return { partyJid, content, messageId, deviceId };
 }
 
-/** Only send actions produce an outbound message worth recording. */
 export function isSendAction(action: string): boolean {
 	return action.startsWith("send");
 }
 
-/** The thread key both halves of a conversation are joined on. */
 export function threadWhere(partyJid: string, agentId: string) {
 	return {
 		channel: "ai" as const,
@@ -65,14 +61,6 @@ export function threadWhere(partyJid: string, agentId: string) {
 	};
 }
 
-/**
- * The durable trace of an unrecorded send. A stdout-only failure is
- * invisible from outside the deploying service — and through the captured
- * pre-configure noop logger it was invisible EVERYWHERE (measured
- * 2026-08-21: zero recorded tool sends, zero failure traces, ever). Every
- * exit that fails to record a send the row opted into now lands this
- * event. Best-effort, never rethrown: the message already left.
- */
 export async function writeUnrecordedSendEvent(
 	serverClientOverride: InjectedServerClient | undefined,
 	tool: ToolDefinition,
@@ -107,7 +95,6 @@ export async function recordOutboundMessagingSend(
 	args: Record<string, unknown>,
 	context: ExecutionContext,
 	result: unknown,
-	/** Injectable for tests; production resolves the configured generated server client. */
 	serverClientOverride?: InjectedServerClient,
 ): Promise<void> {
 	const config = (tool.executor_config ?? {}) as {

@@ -6,13 +6,10 @@
 import type { PrismaClient } from "@teamscala/db/client";
 import type { DynamicPrismaClient } from "#tool-executor/lib/types.ts";
 
-/** Matches the MAX_TAKE response cap on the read path (orpc-args). */
 const ENUMERATION_CAP = 200;
 
 export interface BulkTargetEnumeration {
-	/** Enumerated target identities (key-field values), capped at 200 rows. */
 	affected: Array<Record<string, unknown>>;
-	/** True when more rows matched than are enumerated — read `count` for the total. */
 	affected_truncated: boolean;
 }
 

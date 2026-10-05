@@ -8,13 +8,6 @@ import type { DynamicPrismaClient, EnrichConfig } from "../lib/types";
 
 const logger = getLogger();
 
-/**
- * Apply enrichment steps to findMany results.
- * Each step collects IDs from a source field, batch-fetches from another model,
- * and merges specified fields into each row.
- *
- * Steps run sequentially so later steps can reference fields added by earlier ones.
- */
 export async function applyEnrichment(
 	rows: Record<string, unknown>[],
 	enrichSteps: EnrichConfig[],

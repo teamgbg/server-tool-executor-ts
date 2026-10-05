@@ -11,7 +11,6 @@ import { executeCodingLocally, isCodingCommand } from "./coding-local.ts";
 
 const logger = getLogger();
 
-/** The refusal every non-coding command receives: the bus is retired. */
 export function busRetiredRefusal(command: string): { ok: false; error: string } {
 	return {
 		ok: false,
@@ -25,15 +24,6 @@ export function busRetiredRefusal(command: string): { ok: false; error: string }
 	};
 }
 
-/**
- * Execute a host_command tool natively: coding commands in-process, anything
- * else refused with the retirement named.
- *
- * The dispatch contract is `(tool, args, context)`. The optional `injectedExec`
- * is a dependency-injection seam for the co-located test (which stubs the local
- * execution so no real filesystem work happens) — production dispatch never
- * passes it.
- */
 export async function executeHostCommand(
 	tool: ToolDefinition,
 	args: Record<string, unknown>,
