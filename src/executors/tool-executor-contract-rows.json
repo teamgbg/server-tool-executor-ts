@@ -86,7 +86,7 @@
       "note": "TWO matches refuse where one would have been applied, and the refusal NAMES THE COUNT. Picking the first would edit a file the caller never described; the count is what lets a caller disambiguate and retry.",
       "expect": {
         "ok": false,
-        "error": "edit refused: 'old_string' occurs 2 times in the file"
+        "error": "edit refused: 'old_string' occurs 2 times — include enough surrounding context to name exactly one site"
       },
       "export": "applyExactEdit",
       "module": "src/executors/coding-local.ts",
@@ -103,7 +103,7 @@
       "note": "An empty old_string occurs everywhere and nowhere; the exact-count rule would call it ambiguous. It is refused as absent, and a subject that treated \"\" as a match-everywhere would rewrite the whole file.",
       "expect": {
         "ok": false,
-        "error": "edit refused: 'old_string' does not occur in the file"
+        "error": "edit requires a non-empty 'old_string'"
       },
       "export": "applyExactEdit",
       "module": "src/executors/coding-local.ts",
