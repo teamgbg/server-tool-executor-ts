@@ -419,6 +419,84 @@
     },
     {
       "args": [
+        ""
+      ],
+      "note": "system-caller.test.ts:17",
+      "label": "an empty identity is NOT the system caller — anonymous fails closed",
+      "expect": false,
+      "export": "isSystemCaller",
+      "module": "src/lib/system-caller.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:is-system-caller-empty-string-fails-closed"
+    },
+    {
+      "args": [
+        "user-123"
+      ],
+      "note": "system-caller.test.ts:21",
+      "label": "a real per-org user id is NOT a system caller — stays org-scoped",
+      "expect": false,
+      "export": "isSystemCaller",
+      "module": "src/lib/system-caller.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:is-system-caller-plain-user-id-org-scoped"
+    },
+    {
+      "args": [
+        "system"
+      ],
+      "note": "system-caller.test.ts:8",
+      "label": "the literal 'system' argument is the system caller",
+      "expect": true,
+      "export": "isSystemCaller",
+      "module": "src/lib/system-caller.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:is-system-caller-system-literal"
+    },
+    {
+      "args": [
+        "system"
+      ],
+      "note": "system-caller.test.ts:7",
+      "label": "the explicit 'system' sentinel is the system caller",
+      "expect": true,
+      "export": "isSystemCaller",
+      "module": "src/lib/system-caller.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:is-system-caller-system-sentinel"
+    },
+    {
+      "args": [
+        null
+      ],
+      "note": "system-caller.test.ts:16",
+      "label": "a missing identity is NOT the system caller — anonymous fails closed",
+      "expect": false,
+      "export": "isSystemCaller",
+      "module": "src/lib/system-caller.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:is-system-caller-undefined-fails-closed"
+    },
+    {
+      "args": [
+        "5b742740-0f37-494c-a059-d8399ae4b350"
+      ],
+      "note": "system-caller.test.ts:22",
+      "label": "a real uuid user id is NOT a system caller — stays org-scoped",
+      "expect": false,
+      "export": "isSystemCaller",
+      "module": "src/lib/system-caller.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:is-system-caller-uuid-user-org-scoped"
+    },
+    {
+      "args": [
         "scala_tools_exec"
       ],
       "note": "scala_tools_exec executes here. The four isCodingCommand rows together are the set; each is separate so the failure names WHICH name moved.",
