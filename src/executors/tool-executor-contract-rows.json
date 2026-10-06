@@ -367,6 +367,103 @@
     },
     {
       "args": [
+        {
+          "params": {
+            "phone": "120363403423864514@g.us",
+            "message": "hi team",
+            "device_id": "447882532999@s.whatsapp.net"
+          }
+        },
+        {
+          "results": {}
+        }
+      ],
+      "note": "messaging-send-recorder.test.ts:28-30",
+      "label": "keeps a group jid and an explicit device id untouched, messageId null",
+      "expect": {
+        "member_equals": {
+          "deviceId": "447882532999@s.whatsapp.net",
+          "partyJid": "120363403423864514@g.us",
+          "messageId": null
+        }
+      },
+      "export": "extractSendFacts",
+      "module": "src/executors/messaging-send-recorder.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:extract-send-facts-keeps-group-jid-and-explicit-device-untouched"
+    },
+    {
+      "args": [
+        {
+          "params": {
+            "phone": "+61402349657",
+            "message": "hello"
+          }
+        },
+        {
+          "results": {
+            "message_id": "3EB02EF2"
+          }
+        }
+      ],
+      "note": "messaging-send-recorder.test.ts:15",
+      "label": "normalises a bare E.164 phone into a whatsapp jid",
+      "expect": {
+        "content": "hello",
+        "deviceId": null,
+        "partyJid": "61402349657@s.whatsapp.net",
+        "messageId": "3EB02EF2"
+      },
+      "export": "extractSendFacts",
+      "module": "src/executors/messaging-send-recorder.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:extract-send-facts-normalises-e164-phone-into-whatsapp-jid"
+    },
+    {
+      "args": [
+        {
+          "params": {
+            "message": "x"
+          }
+        },
+        {}
+      ],
+      "note": "messaging-send-recorder.test.ts:34",
+      "label": "returns null when the send names no destination",
+      "expect": null,
+      "export": "extractSendFacts",
+      "module": "src/executors/messaging-send-recorder.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:extract-send-facts-null-when-no-destination"
+    },
+    {
+      "args": [
+        {
+          "body": {
+            "text": "from body",
+            "phone": "61402349657"
+          }
+        },
+        null
+      ],
+      "note": "messaging-send-recorder.test.ts:42",
+      "label": "reads the payload from body when params is absent",
+      "expect": {
+        "member_equals": {
+          "content": "from body"
+        }
+      },
+      "export": "extractSendFacts",
+      "module": "src/executors/messaging-send-recorder.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:extract-send-facts-reads-body-when-params-absent"
+    },
+    {
+      "args": [
         "codemod"
       ],
       "note": "coding-local.test.ts:66",
@@ -416,6 +513,58 @@
       "package": "@teamscala/tool-executor",
       "suite_type": "function_call",
       "slug": "tool-executor:is-coding-command-workspace-file"
+    },
+    {
+      "args": [
+        "listChats"
+      ],
+      "note": "messaging-send-recorder.test.ts:50",
+      "label": "listChats does not record",
+      "expect": false,
+      "export": "isSendAction",
+      "module": "src/executors/messaging-send-recorder.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:is-send-action-list-chats-does-not-record"
+    },
+    {
+      "args": [
+        "revokeMessage"
+      ],
+      "note": "messaging-send-recorder.test.ts:51",
+      "label": "revokeMessage does not record",
+      "expect": false,
+      "export": "isSendAction",
+      "module": "src/executors/messaging-send-recorder.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:is-send-action-revoke-message-does-not-record"
+    },
+    {
+      "args": [
+        "sendImage"
+      ],
+      "note": "messaging-send-recorder.test.ts:49",
+      "label": "sendImage records",
+      "expect": true,
+      "export": "isSendAction",
+      "module": "src/executors/messaging-send-recorder.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:is-send-action-send-image-records"
+    },
+    {
+      "args": [
+        "sendMessage"
+      ],
+      "note": "messaging-send-recorder.test.ts:48",
+      "label": "sendMessage records",
+      "expect": true,
+      "export": "isSendAction",
+      "module": "src/executors/messaging-send-recorder.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:is-send-action-send-message-records"
     },
     {
       "args": [
@@ -604,6 +753,29 @@
       "package": "@teamscala/tool-executor",
       "suite_type": "function_call",
       "slug": "tool-executor:the-coding-commands-are-the-three-bus-names"
+    },
+    {
+      "args": [
+        "61402349657@s.whatsapp.net",
+        "agent-1"
+      ],
+      "note": "messaging-send-recorder.test.ts:57",
+      "label": "keys the thread exactly as the inbound receiver does",
+      "expect": {
+        "channel": "ai",
+        "user_id": "whatsapp:61402349657@s.whatsapp.net",
+        "channel_data": {
+          "path": [
+            "assistant_type"
+          ],
+          "equals": "custom-gpt:agent-1"
+        }
+      },
+      "export": "threadWhere",
+      "module": "src/executors/messaging-send-recorder.ts",
+      "package": "@teamscala/tool-executor",
+      "suite_type": "function_call",
+      "slug": "tool-executor:thread-where-keys-the-thread-exactly-as-the-inbound-receiver"
     }
   ]
 }
