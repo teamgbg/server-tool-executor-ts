@@ -35,21 +35,28 @@ test("getDecryptSecretConfig reads back what configure() injected", () => {
 	// cannot typecheck: `toBe` is typed against the accessor's declared return,
 	// so a sentinel of any other shape is rejected. This failed in every package
 	// carrying the generated file.
+	const asFound = getDecryptSecretConfig();
 	const injected = { probe: "decryptSecretConfig" };
 	configure({ decryptSecretConfig: injected } as never);
 	expect(getDecryptSecretConfig()).toBe(injected as never);
+	// The suite leaves the module as it found it: bun test runs every file in
+	// ONE process, and a holder left holding the probe poisons every later
+	// suite that reads this accessor.
+	configure({ decryptSecretConfig: asFound } as never);
 });
 
 test("a second configure() replaces what getDecryptSecretConfig returns", () => {
 	// A boot re-run must REPLACE rather than accumulate, or a stale value
 	// survives behind the current one and the accessor reports the wrong
 	// injection with nothing failing.
+	const asFound = getDecryptSecretConfig();
 	const first = { probe: "decryptSecretConfig_first" };
 	const second = { probe: "decryptSecretConfig_second" };
 	configure({ decryptSecretConfig: first } as never);
 	configure({ decryptSecretConfig: second } as never);
 	expect(getDecryptSecretConfig()).toBe(second as never);
 	expect(getDecryptSecretConfig()).not.toBe(first as never);
+	configure({ decryptSecretConfig: asFound } as never);
 });
 
 test("getLogger() keeps one object identity across configure() calls", () => {
@@ -63,6 +70,11 @@ test("a reference captured BEFORE configure() observes the injected logger", () 
 	// whatever was injected, or a pre-configure capture keeps talking to the
 	// no-op forever with nothing failing.
 	const captured = getLogger() as unknown as Record<string, (...args: never[]) => unknown>;
+	// Every member this case overwrites is captured first and configured back
+	// on the way out: bun test runs every file in ONE process, so a case that
+	// injects without restoring hands every later suite its recorder.
+	const previous: Record<string, unknown> = {};
+	for (const name of ["ctx", "debug", "error", "info", "msg", "warn"]) previous[name] = captured[name];
 	const seen: string[] = [];
 	configure({
 		logger: {
@@ -79,6 +91,7 @@ test("a reference captured BEFORE configure() observes the injected logger", () 
 	} as never);
 	captured["ctx"]?.();
 	expect(seen).toContain("ctx");
+	configure({ logger: previous } as never);
 });
 
 test("getScalaDevKey reads back what configure() injected", () => {
@@ -88,19 +101,26 @@ test("getScalaDevKey reads back what configure() injected", () => {
 	// cannot typecheck: `toBe` is typed against the accessor's declared return,
 	// so a sentinel of any other shape is rejected. This failed in every package
 	// carrying the generated file.
+	const asFound = getScalaDevKey();
 	const injected = { probe: "scalaDevKey" };
 	configure({ scalaDevKey: injected } as never);
 	expect(getScalaDevKey()).toBe(injected as never);
+	// The suite leaves the module as it found it: bun test runs every file in
+	// ONE process, and a holder left holding the probe poisons every later
+	// suite that reads this accessor.
+	configure({ scalaDevKey: asFound } as never);
 });
 
 test("a second configure() replaces what getScalaDevKey returns", () => {
 	// A boot re-run must REPLACE rather than accumulate, or a stale value
 	// survives behind the current one and the accessor reports the wrong
 	// injection with nothing failing.
+	const asFound = getScalaDevKey();
 	const first = { probe: "scalaDevKey_first" };
 	const second = { probe: "scalaDevKey_second" };
 	configure({ scalaDevKey: first } as never);
 	configure({ scalaDevKey: second } as never);
 	expect(getScalaDevKey()).toBe(second as never);
 	expect(getScalaDevKey()).not.toBe(first as never);
+	configure({ scalaDevKey: asFound } as never);
 });
