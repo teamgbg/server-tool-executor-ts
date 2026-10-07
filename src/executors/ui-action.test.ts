@@ -24,7 +24,7 @@ const calls: Array<{ procedure: string; args: Record<string, unknown> }> = [];
 let agentRow: Record<string, unknown> | null = null;
 let entityResult: unknown = null;
 
-mock.module("./orpc.ts", () => ({
+mock.module("@teamscala/tool-executor-orpc/executors/orpc.ts", () => ({
 	executeOrpcProcedure: async (procedure: string, args: Record<string, unknown>) => {
 		calls.push({ procedure, args });
 		if (procedure === "ai_agents.findFirst") return agentRow;

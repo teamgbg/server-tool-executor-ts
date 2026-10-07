@@ -10,7 +10,7 @@ import type {
 	ToolDefinition,
 	UiActionExecutorConfig,
 } from "@teamscala/tool-executor-substrate/lib/types.ts";
-import { executeOrpcProcedure } from "./orpc.ts";
+import { executeOrpcProcedure } from "@teamscala/tool-executor-orpc/executors/orpc.ts";
 
 const logger = getLogger();
 
