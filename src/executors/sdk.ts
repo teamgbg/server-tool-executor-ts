@@ -4,8 +4,8 @@
  */
 
 import { createRequire } from "node:module";
-import { getLogger } from "../configure.ts";
-import type { ExecutionContext, ToolDefinition } from "../lib/types";
+import { getLogger } from "@teamscala/tool-executor-substrate/configure.ts";
+import type { ExecutionContext, ToolDefinition } from "@teamscala/tool-executor-substrate/lib/types.ts";
 import { recordOutboundMessagingSend } from "./messaging-send-recorder.ts";
 import { resolveAdapterClientOptions, sdkPackageName } from "./sdk-client-options.ts";
 

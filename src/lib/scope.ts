@@ -5,10 +5,10 @@
 
 const logger = getLogger();
 
-import { getLogger } from "../configure.ts";
-import { modelHasField } from "./prisma-meta";
-import { isSystemCaller } from "./system-caller";
-import type { ExecutionContext, OrpcExecutorConfig } from "./types";
+import { getLogger } from "@teamscala/tool-executor-substrate/configure.ts";
+import { modelHasField } from "@teamscala/tool-executor-substrate/lib/prisma-meta.ts";
+import { isSystemCaller } from "@teamscala/tool-executor-substrate/lib/system-caller.ts";
+import type { ExecutionContext, OrpcExecutorConfig } from "@teamscala/tool-executor-substrate/lib/types.ts";
 
 function isOrgFieldSet(
 	where: Record<string, unknown>,

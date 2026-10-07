@@ -7,7 +7,7 @@ import { addScopeToWhere } from "#tool-executor/lib/scope.ts";
 import type {
 	ExecutionContext,
 	OrpcExecutorConfig,
-} from "#tool-executor/lib/types.ts";
+} from "@teamscala/tool-executor-substrate/lib/types.ts";
 import {
 	buildCreateData,
 	buildFindManyArgs,

@@ -7,9 +7,9 @@ import { executeOrpcProcedure } from "../executors/orpc";
 
 const logger = getLogger();
 
-import { getLogger } from "../configure.ts";
-import { isSystemCaller } from "./system-caller";
-import type { ExecutionContext, OrpcExecutorConfig } from "./types";
+import { getLogger } from "@teamscala/tool-executor-substrate/configure.ts";
+import { isSystemCaller } from "@teamscala/tool-executor-substrate/lib/system-caller.ts";
+import type { ExecutionContext, OrpcExecutorConfig } from "@teamscala/tool-executor-substrate/lib/types.ts";
 
 // ---------------------------------------------------------------------------
 // Auth validation (config-driven, no hardcoded model names)

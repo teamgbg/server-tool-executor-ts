@@ -8,8 +8,8 @@
 // with it into the band.
 
 import { expect, test } from "bun:test";
-import { configure } from "../configure.ts";
-import type { OrpcExecutorConfig } from "../lib/types.ts";
+import { configure } from "@teamscala/tool-executor-substrate/configure.ts";
+import type { OrpcExecutorConfig } from "@teamscala/tool-executor-substrate/lib/types.ts";
 import { executeOrpcProcedure } from "./orpc.ts";
 
 test("missing model router refuses instead of dispatching through Prisma", async () => {

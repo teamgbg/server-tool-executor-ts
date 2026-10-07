@@ -6,8 +6,8 @@
 
 
 
-import { getLogger } from "../configure.ts";
-import type { DynamicPrismaClient } from "./types";
+import { getLogger } from "@teamscala/tool-executor-substrate/configure.ts";
+import type { DynamicPrismaClient } from "@teamscala/tool-executor-substrate/lib/types.ts";
 
 const logger = getLogger();
 

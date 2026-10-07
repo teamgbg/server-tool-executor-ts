@@ -3,8 +3,8 @@
  * @status handwritten
  */
 
-import { getLogger } from "../configure.ts";
-import type { DynamicPrismaClient, EnrichConfig } from "../lib/types";
+import { getLogger } from "@teamscala/tool-executor-substrate/configure.ts";
+import type { DynamicPrismaClient, EnrichConfig } from "@teamscala/tool-executor-substrate/lib/types.ts";
 
 const logger = getLogger();
 

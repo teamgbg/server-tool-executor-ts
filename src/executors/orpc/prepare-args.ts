@@ -34,11 +34,11 @@
 
 import { resolveAdminOverride, validateAuth } from "#tool-executor/lib/auth.ts";
 import { applyDefaultLimits } from "#tool-executor/lib/default-limits.ts";
-import { getModelFields, modelHasField } from "#tool-executor/lib/prisma-meta.ts";
+import { getModelFields, modelHasField } from "@teamscala/tool-executor-substrate/lib/prisma-meta.ts";
 import type {
 	ExecutionContext,
 	OrpcExecutorConfig,
-} from "#tool-executor/lib/types.ts";
+} from "@teamscala/tool-executor-substrate/lib/types.ts";
 import { rejectForbiddenFieldValues } from "./prepare-args-guard.ts";
 
 export async function prepareArgs(

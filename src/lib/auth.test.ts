@@ -8,9 +8,9 @@
 // with it into the band.
 
 import { describe, expect, test } from "bun:test";
-import { configure } from "../configure.ts";
+import { configure } from "@teamscala/tool-executor-substrate/configure.ts";
 import { validateAuth } from "./auth";
-import type { ExecutionContext } from "./types";
+import type { ExecutionContext } from "@teamscala/tool-executor-substrate/lib/types.ts";
 
 configure({
 	logger: {

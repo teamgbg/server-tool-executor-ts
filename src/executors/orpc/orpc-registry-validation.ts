@@ -5,8 +5,8 @@
 
 const uuidv7 = () => Bun.randomUUIDv7();
 
-import { getLogger } from "#tool-executor/configure.ts";
-import type { ExecutionContext } from "#tool-executor/lib/types.ts";
+import { getLogger } from "@teamscala/tool-executor-substrate/configure.ts";
+import type { ExecutionContext } from "@teamscala/tool-executor-substrate/lib/types.ts";
 import type { PrismaClient } from "@teamscala/db/client";
 import { validateRow } from "@teamscala/db-validation/validate-row";
 import { validateJsonSchema } from "@teamscala/formatters/validate-json-schema";

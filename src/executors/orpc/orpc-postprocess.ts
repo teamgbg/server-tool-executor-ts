@@ -15,7 +15,7 @@ import type {
 	DynamicPrismaClient,
 	ExecutionContext,
 	OrpcExecutorConfig,
-} from "#tool-executor/lib/types.ts";
+} from "@teamscala/tool-executor-substrate/lib/types.ts";
 import { applyEnrichment } from "../orpc-enrichment";
 
 export async function postProcessResult(

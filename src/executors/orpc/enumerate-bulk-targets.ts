@@ -4,7 +4,7 @@
  */
 
 import type { PrismaClient } from "@teamscala/db/client";
-import type { DynamicPrismaClient } from "#tool-executor/lib/types.ts";
+import type { DynamicPrismaClient } from "@teamscala/tool-executor-substrate/lib/types.ts";
 
 const ENUMERATION_CAP = 200;
 

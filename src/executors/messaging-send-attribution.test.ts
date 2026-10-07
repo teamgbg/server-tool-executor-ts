@@ -76,7 +76,7 @@ describe("resolveFirstDeviceDigits", () => {
 		// bare catch ate it. The exit is still fail-open (the message already
 		// left) but the cause must be observable.
 		const errors: string[] = [];
-		const { getLogger } = await import("../configure.ts");
+		const { getLogger } = await import("@teamscala/tool-executor-substrate/configure.ts");
 		const originalError = getLogger().error;
 		getLogger().error = ((msg: string) => {
 			errors.push(String(msg));

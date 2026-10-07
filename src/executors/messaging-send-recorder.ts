@@ -4,9 +4,9 @@
  */
 
 import { createRequire } from "node:module";
-import { getLogger, getServerClient } from "../configure.ts";
-import type { InjectedServerClient } from "../configure.ts";
-import type { ExecutionContext, ToolDefinition } from "../lib/types";
+import { getLogger, getServerClient } from "@teamscala/tool-executor-substrate/configure.ts";
+import type { InjectedServerClient } from "@teamscala/tool-executor-substrate/configure.ts";
+import type { ExecutionContext, ToolDefinition } from "@teamscala/tool-executor-substrate/lib/types.ts";
 import {
 	resolveAdapterClientOptions,
 	sdkPackageName,

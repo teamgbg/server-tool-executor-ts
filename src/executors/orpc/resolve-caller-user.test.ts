@@ -8,7 +8,7 @@
 // with it into the band.
 
 import { describe, expect, test } from "bun:test";
-import { SYSTEM_USER_ID } from "#tool-executor/lib/system-caller.ts";
+import { SYSTEM_USER_ID } from "@teamscala/tool-executor-substrate/lib/system-caller.ts";
 import {
 	resolveCallerUser,
 	type CallerUserDb,

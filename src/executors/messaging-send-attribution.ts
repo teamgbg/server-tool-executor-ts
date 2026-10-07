@@ -3,8 +3,8 @@
  * @status handwritten
  */
 
-import { getLogger, type InjectedServerClient } from "../configure.ts";
-import type { ExecutionContext } from "../lib/types";
+import { getLogger, type InjectedServerClient } from "@teamscala/tool-executor-substrate/configure.ts";
+import type { ExecutionContext } from "@teamscala/tool-executor-substrate/lib/types.ts";
 
 const logger = getLogger();
 

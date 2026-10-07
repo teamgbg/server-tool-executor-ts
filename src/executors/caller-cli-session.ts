@@ -3,7 +3,7 @@
  * @status handwritten
  */
 
-import type { ExecutionContext } from "../lib/types.ts";
+import type { ExecutionContext } from "@teamscala/tool-executor-substrate/lib/types.ts";
 
 export type CallerCliSession = {
 	id: string;

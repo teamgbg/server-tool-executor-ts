@@ -4,11 +4,11 @@
  */
 
 import { createRouterClient as createCaller, type AnyRouter } from "@orpc/server";
-import { getAppRouter, getLogger, getPrisma } from "../configure.ts";
+import { getAppRouter, getLogger, getPrisma } from "@teamscala/tool-executor-substrate/configure.ts";
 import { getFullTextSearchInfo } from "../lib/fts-registry.ts";
 import { injectScopeFilter } from "../lib/scope";
 import { queryRowsUnsafe } from "@teamscala/db/query-rows";
-import type { ExecutionContext, OrpcExecutorConfig } from "../lib/types";
+import type { ExecutionContext, OrpcExecutorConfig } from "@teamscala/tool-executor-substrate/lib/types.ts";
 
 const logger = getLogger();
 

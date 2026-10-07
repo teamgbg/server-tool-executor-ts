@@ -9,7 +9,7 @@
 
 import { describe, expect, test } from "bun:test";
 import { busRetiredRefusal, executeHostCommand } from "./host-command.ts";
-import type { ToolDefinition } from "../lib/types.ts";
+import type { ToolDefinition } from "@teamscala/tool-executor-substrate/lib/types.ts";
 
 function makeTool(overrides: Partial<ToolDefinition> = {}): ToolDefinition {
 	return {

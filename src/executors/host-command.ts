@@ -5,8 +5,8 @@
 
 import {
 	getLogger,
-} from "../configure.ts";
-import type { ExecutionContext, ToolDefinition } from "../lib/types";
+} from "@teamscala/tool-executor-substrate/configure.ts";
+import type { ExecutionContext, ToolDefinition } from "@teamscala/tool-executor-substrate/lib/types.ts";
 import { executeCodingLocally, isCodingCommand } from "./coding-local.ts";
 
 const logger = getLogger();

@@ -3,12 +3,12 @@
  * @status handwritten
  */
 
-import { getLogger } from "#tool-executor/configure.ts";
+import { getLogger } from "@teamscala/tool-executor-substrate/configure.ts";
 import { getFullTextSearchInfo } from "#tool-executor/lib/fts-registry.ts";
 import type {
 	ExecutionContext,
 	OrpcExecutorConfig,
-} from "#tool-executor/lib/types.ts";
+} from "@teamscala/tool-executor-substrate/lib/types.ts";
 import {
 	mergeDirectMatchIds,
 	queryDirectMatchIds,

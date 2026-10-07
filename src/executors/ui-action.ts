@@ -3,13 +3,13 @@
  * @status handwritten
  */
 
-import { getLogger } from "../configure.ts";
+import { getLogger } from "@teamscala/tool-executor-substrate/configure.ts";
 import type {
 	ExecutionContext,
 	OrpcExecutorConfig,
 	ToolDefinition,
 	UiActionExecutorConfig,
-} from "../lib/types";
+} from "@teamscala/tool-executor-substrate/lib/types.ts";
 import { executeOrpcProcedure } from "./orpc.ts";
 
 const logger = getLogger();

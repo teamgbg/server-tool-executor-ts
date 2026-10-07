@@ -3,8 +3,8 @@
  * @status handwritten
  */
 
-import { getLogger } from "../configure.ts";
-import { loadToolExecutorCacheControls } from "./cache-controls.ts";
+import { getLogger } from "@teamscala/tool-executor-substrate/configure.ts";
+import { loadToolExecutorCacheControls } from "@teamscala/tool-executor-substrate/lib/cache-controls.ts";
 import { queryRows } from "@teamscala/db/query-rows";
 
 const logger = getLogger();

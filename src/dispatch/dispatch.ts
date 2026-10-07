@@ -3,7 +3,7 @@
  * @status handwritten
  */
 
-import { getLogger } from "../configure.ts";
+import { getLogger } from "@teamscala/tool-executor-substrate/configure.ts";
 import { executeHostCommand } from "../executors/host-command";
 import { executeSdkTool } from "../executors/sdk";
 import { executeUiActionTool } from "../executors/ui-action";
@@ -13,7 +13,7 @@ import type {
 	ExecutionContext,
 	OrpcExecutorConfig,
 	ToolDefinition,
-} from "../lib/types";
+} from "@teamscala/tool-executor-substrate/lib/types.ts";
 
 const logger = getLogger();
 

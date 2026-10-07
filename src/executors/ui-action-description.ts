@@ -3,7 +3,7 @@
  * @status handwritten
  */
 
-import type { UiActionDescribeConfig } from "../lib/types";
+import type { UiActionDescribeConfig } from "@teamscala/tool-executor-substrate/lib/types.ts";
 
 export function renderUiActionDescription(
 	baseDescription: string,

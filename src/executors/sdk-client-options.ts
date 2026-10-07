@@ -5,8 +5,8 @@
 
 import type { RegistryKeyFor } from "@teamscala/db/registry/generated/registry-type";
 import * as v from "valibot";
-import { getDecryptSecretConfig, getLogger } from "../configure.ts";
-import { loadToolExecutorCacheControls } from "../lib/cache-controls.ts";
+import { getDecryptSecretConfig, getLogger } from "@teamscala/tool-executor-substrate/configure.ts";
+import { loadToolExecutorCacheControls } from "@teamscala/tool-executor-substrate/lib/cache-controls.ts";
 
 const logger = getLogger();
 

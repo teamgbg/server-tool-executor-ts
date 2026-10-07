@@ -8,7 +8,7 @@
 // with it into the band.
 
 import { describe, expect, test } from "bun:test";
-import { configure } from "../configure.ts";
+import { configure } from "@teamscala/tool-executor-substrate/configure.ts";
 import {
 	buildCreateData,
 	buildUpdateArgs,

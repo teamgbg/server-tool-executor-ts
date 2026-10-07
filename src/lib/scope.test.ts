@@ -8,9 +8,9 @@
 // with it into the band.
 
 import { describe, expect, test } from "bun:test";
-import { configure } from "../configure.ts";
+import { configure } from "@teamscala/tool-executor-substrate/configure.ts";
 import { injectScopeFilter } from "./scope";
-import type { ExecutionContext, OrpcExecutorConfig } from "./types";
+import type { ExecutionContext, OrpcExecutorConfig } from "@teamscala/tool-executor-substrate/lib/types.ts";
 
 configure({
 	logger: {

@@ -8,8 +8,8 @@
 // with it into the band.
 
 import { describe, expect, test } from "bun:test";
-import { configure } from "../configure.ts";
-import type { ExecutionContext, OrpcExecutorConfig } from "../lib/types.ts";
+import { configure } from "@teamscala/tool-executor-substrate/configure.ts";
+import type { ExecutionContext, OrpcExecutorConfig } from "@teamscala/tool-executor-substrate/lib/types.ts";
 import { buildUpdateArgs } from "./orpc-args.ts";
 
 configure({

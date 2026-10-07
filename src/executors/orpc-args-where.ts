@@ -2,9 +2,9 @@
  * @system mcp-infrastructure
  * @status handwritten
  */
-import { getModelFields } from "../lib/prisma-meta";
+import { getModelFields } from "@teamscala/tool-executor-substrate/lib/prisma-meta.ts";
 import { setNestedField } from "../lib/scope";
-import type { OrpcExecutorConfig } from "../lib/types";
+import type { OrpcExecutorConfig } from "@teamscala/tool-executor-substrate/lib/types.ts";
 
 const RESERVED_INPUT_KEYS = new Set([
 	"action",

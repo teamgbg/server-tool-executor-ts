@@ -20,7 +20,7 @@ import {
 	resolveUserOrganisationId,
 	type UserOrganisationDb,
 } from "@teamscala/db/user-organisations";
-import { isSystemCaller, SYSTEM_USER_ID } from "#tool-executor/lib/system-caller.ts";
+import { isSystemCaller, SYSTEM_USER_ID } from "@teamscala/tool-executor-substrate/lib/system-caller.ts";
 
 export interface CallerUserContext {
 	userId?: string;
