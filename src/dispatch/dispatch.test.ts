@@ -8,7 +8,7 @@
 // with it into the band.
 
 import { describe, expect, test } from "bun:test";
-import { executeHostCommand } from "../executors/host-command";
+import { executeHostCommand } from "@teamscala/tool-executor-host-bus/executors/host-command.ts";
 import { executeSdkTool } from "@teamscala/tool-executor-adapters/executors/sdk.ts";
 import { executeTool, EXECUTORS } from "./dispatch";
 
