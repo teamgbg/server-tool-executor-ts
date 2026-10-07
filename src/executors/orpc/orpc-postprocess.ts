@@ -10,7 +10,7 @@ import {
 	executeWithCount,
 	normalizeJsonResponse,
 	truncateLargeResponse,
-} from "#tool-executor/lib/response.ts";
+} from "@teamscala/tool-executor-response/lib/response.ts";
 import type {
 	DynamicPrismaClient,
 	ExecutionContext,
