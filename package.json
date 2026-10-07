@@ -23,6 +23,7 @@
 		"@teamscala/db-validation": "*",
 		"@teamscala/formatters": "*",
 		"@teamscala/os": "*",
+		"@teamscala/tool-executor-scope": "*",
 		"@teamscala/tool-executor-substrate": "*",
 		"valibot": "*"
 	},
@@ -88,16 +89,10 @@
 		"./executors/work-items-status-bulk-gate.ts": "./src/executors/work-items-status-bulk-gate.ts",
 		"./lib/auth": "./src/lib/auth.ts",
 		"./lib/auth.ts": "./src/lib/auth.ts",
-		"./lib/default-limits": "./src/lib/default-limits.ts",
-		"./lib/default-limits.ts": "./src/lib/default-limits.ts",
 		"./lib/filter-transform": "./src/lib/filter-transform.ts",
 		"./lib/filter-transform.ts": "./src/lib/filter-transform.ts",
-		"./lib/fts-registry": "./src/lib/fts-registry.ts",
-		"./lib/fts-registry.ts": "./src/lib/fts-registry.ts",
 		"./lib/response": "./src/lib/response.ts",
-		"./lib/response.ts": "./src/lib/response.ts",
-		"./lib/scope": "./src/lib/scope.ts",
-		"./lib/scope.ts": "./src/lib/scope.ts"
+		"./lib/response.ts": "./src/lib/response.ts"
 	},
 	"repository": "https://github.com/teamgbg/server-tool-executor-ts",
 	"publishConfig": {
