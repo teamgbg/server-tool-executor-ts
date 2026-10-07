@@ -24,6 +24,7 @@
 		"@teamscala/formatters": "*",
 		"@teamscala/tool-executor-adapters": "*",
 		"@teamscala/tool-executor-host-bus": "*",
+		"@teamscala/tool-executor-orpc": "*",
 		"@teamscala/tool-executor-response": "*",
 		"@teamscala/tool-executor-scope": "*",
 		"@teamscala/tool-executor-substrate": "*"
