@@ -32,9 +32,7 @@
 		"src/dispatch/**/*.ts",
 		"src/dispatch/**/*.tsx",
 		"src/executors/**/*.ts",
-		"src/executors/**/*.tsx",
-		"src/lib/**/*.ts",
-		"src/lib/**/*.tsx"
+		"src/executors/**/*.tsx"
 	],
 	"exclude": [
 		"node_modules",
