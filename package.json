@@ -19,11 +19,11 @@
 	],
 	"dependencies": {
 		"@orpc/server": "*",
-		"@teamscala/cache": "*",
 		"@teamscala/db": "*",
 		"@teamscala/db-validation": "*",
 		"@teamscala/formatters": "*",
 		"@teamscala/os": "*",
+		"@teamscala/tool-executor-substrate": "*",
 		"valibot": "*"
 	},
 	"devDependencies": {
@@ -32,8 +32,6 @@
 		"@testing-library/react": "*"
 	},
 	"exports": {
-		"./configure": "./src/configure.ts",
-		"./configure.ts": "./src/configure.ts",
 		"./dispatch/dispatch": "./src/dispatch/dispatch.ts",
 		"./dispatch/dispatch.ts": "./src/dispatch/dispatch.ts",
 		"./executors/caller-cli-session": "./src/executors/caller-cli-session.ts",
@@ -90,22 +88,14 @@
 		"./executors/work-items-status-bulk-gate.ts": "./src/executors/work-items-status-bulk-gate.ts",
 		"./lib/auth": "./src/lib/auth.ts",
 		"./lib/auth.ts": "./src/lib/auth.ts",
-		"./lib/cache-controls": "./src/lib/cache-controls.ts",
-		"./lib/cache-controls.ts": "./src/lib/cache-controls.ts",
 		"./lib/default-limits": "./src/lib/default-limits.ts",
 		"./lib/default-limits.ts": "./src/lib/default-limits.ts",
 		"./lib/fts-registry": "./src/lib/fts-registry.ts",
 		"./lib/fts-registry.ts": "./src/lib/fts-registry.ts",
-		"./lib/prisma-meta": "./src/lib/prisma-meta.ts",
-		"./lib/prisma-meta.ts": "./src/lib/prisma-meta.ts",
 		"./lib/response": "./src/lib/response.ts",
 		"./lib/response.ts": "./src/lib/response.ts",
 		"./lib/scope": "./src/lib/scope.ts",
-		"./lib/scope.ts": "./src/lib/scope.ts",
-		"./lib/system-caller": "./src/lib/system-caller.ts",
-		"./lib/system-caller.ts": "./src/lib/system-caller.ts",
-		"./lib/types": "./src/lib/types.ts",
-		"./lib/types.ts": "./src/lib/types.ts"
+		"./lib/scope.ts": "./src/lib/scope.ts"
 	},
 	"repository": "https://github.com/teamgbg/server-tool-executor-ts",
 	"publishConfig": {
