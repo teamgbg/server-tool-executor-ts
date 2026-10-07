@@ -29,8 +29,6 @@
 		}
 	},
 	"include": [
-		"src/dispatch/**/*.ts",
-		"src/dispatch/**/*.tsx",
 		"src/executors/**/*.ts",
 		"src/executors/**/*.tsx"
 	],
