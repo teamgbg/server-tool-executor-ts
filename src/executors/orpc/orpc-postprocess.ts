@@ -4,7 +4,7 @@
  */
 
 import type { PrismaClient } from "@teamscala/db/client";
-import { addPaginationHint } from "#tool-executor/lib/default-limits.ts";
+import { addPaginationHint } from "@teamscala/tool-executor-scope/lib/default-limits.ts";
 import {
 	compactTranscriptFields,
 	executeWithCount,

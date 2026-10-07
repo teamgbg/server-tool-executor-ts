@@ -2,8 +2,8 @@
  * @system mcp-infrastructure
  * @status handwritten
  */
-import { injectScopeFilter } from "#tool-executor/lib/scope.ts";
-import { addScopeToWhere } from "#tool-executor/lib/scope.ts";
+import { injectScopeFilter } from "@teamscala/tool-executor-scope/lib/scope.ts";
+import { addScopeToWhere } from "@teamscala/tool-executor-scope/lib/scope.ts";
 import type {
 	ExecutionContext,
 	OrpcExecutorConfig,

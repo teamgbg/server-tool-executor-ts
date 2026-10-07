@@ -3,7 +3,7 @@
  * @status handwritten
  */
 import { getModelFields } from "@teamscala/tool-executor-substrate/lib/prisma-meta.ts";
-import { setNestedField } from "../lib/scope";
+import { setNestedField } from "@teamscala/tool-executor-scope/lib/scope.ts";
 import type { OrpcExecutorConfig } from "@teamscala/tool-executor-substrate/lib/types.ts";
 
 const RESERVED_INPUT_KEYS = new Set([

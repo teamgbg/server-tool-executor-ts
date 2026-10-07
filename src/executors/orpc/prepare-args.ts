@@ -33,7 +33,7 @@
 		// parallel catalogue to avoid).
 
 import { resolveAdminOverride, validateAuth } from "#tool-executor/lib/auth.ts";
-import { applyDefaultLimits } from "#tool-executor/lib/default-limits.ts";
+import { applyDefaultLimits } from "@teamscala/tool-executor-scope/lib/default-limits.ts";
 import { getModelFields, modelHasField } from "@teamscala/tool-executor-substrate/lib/prisma-meta.ts";
 import type {
 	ExecutionContext,

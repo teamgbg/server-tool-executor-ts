@@ -5,7 +5,7 @@
 import { createRouterClient as createCaller, type AnyRouter } from "@orpc/server";
 import type { PrismaClient } from "@teamscala/db/client";
 import { getAppRouter, getLogger, getPrisma } from "@teamscala/tool-executor-substrate/configure.ts";
-import { setNestedField } from "../lib/scope";
+import { setNestedField } from "@teamscala/tool-executor-scope/lib/scope.ts";
 import type { ExecutionContext, OrpcExecutorConfig } from "@teamscala/tool-executor-substrate/lib/types.ts";
 import { enumerateBulkTargets } from "./orpc/enumerate-bulk-targets";
 import { postProcessResult } from "./orpc/orpc-postprocess";

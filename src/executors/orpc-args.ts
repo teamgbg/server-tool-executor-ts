@@ -23,7 +23,8 @@ import {
 	isNumericField,
 	modelHasField,
 } from "@teamscala/tool-executor-substrate/lib/prisma-meta.ts";
-import { applyFilterTransform, injectScopeFilter } from "../lib/scope";
+import { applyFilterTransform } from "../lib/filter-transform";
+import { injectScopeFilter } from "@teamscala/tool-executor-scope/lib/scope.ts";
 import type { ExecutionContext, OrpcExecutorConfig } from "@teamscala/tool-executor-substrate/lib/types.ts";
 import {
 	extractFlatFilters,

@@ -4,7 +4,7 @@
  */
 
 import { getLogger } from "@teamscala/tool-executor-substrate/configure.ts";
-import { getFullTextSearchInfo } from "#tool-executor/lib/fts-registry.ts";
+import { getFullTextSearchInfo } from "@teamscala/tool-executor-scope/lib/fts-registry.ts";
 import type {
 	ExecutionContext,
 	OrpcExecutorConfig,

@@ -5,8 +5,8 @@
 
 import { createRouterClient as createCaller, type AnyRouter } from "@orpc/server";
 import { getAppRouter, getLogger, getPrisma } from "@teamscala/tool-executor-substrate/configure.ts";
-import { getFullTextSearchInfo } from "../lib/fts-registry.ts";
-import { injectScopeFilter } from "../lib/scope";
+import { getFullTextSearchInfo } from "@teamscala/tool-executor-scope/lib/fts-registry.ts";
+import { injectScopeFilter } from "@teamscala/tool-executor-scope/lib/scope.ts";
 import { queryRowsUnsafe } from "@teamscala/db/query-rows";
 import type { ExecutionContext, OrpcExecutorConfig } from "@teamscala/tool-executor-substrate/lib/types.ts";
 
