@@ -90,6 +90,8 @@
 		"./lib/auth.ts": "./src/lib/auth.ts",
 		"./lib/default-limits": "./src/lib/default-limits.ts",
 		"./lib/default-limits.ts": "./src/lib/default-limits.ts",
+		"./lib/filter-transform": "./src/lib/filter-transform.ts",
+		"./lib/filter-transform.ts": "./src/lib/filter-transform.ts",
 		"./lib/fts-registry": "./src/lib/fts-registry.ts",
 		"./lib/fts-registry.ts": "./src/lib/fts-registry.ts",
 		"./lib/response": "./src/lib/response.ts",
