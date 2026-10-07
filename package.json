@@ -23,9 +23,10 @@
 		"@teamscala/db-validation": "*",
 		"@teamscala/formatters": "*",
 		"@teamscala/os": "*",
+		"@teamscala/tool-executor-adapters": "*",
+		"@teamscala/tool-executor-response": "*",
 		"@teamscala/tool-executor-scope": "*",
-		"@teamscala/tool-executor-substrate": "*",
-		"valibot": "*"
+		"@teamscala/tool-executor-substrate": "*"
 	},
 	"devDependencies": {
 		"bun-types": "*",
@@ -43,10 +44,6 @@
 		"./executors/comment-write-identity.ts": "./src/executors/comment-write-identity.ts",
 		"./executors/host-command": "./src/executors/host-command.ts",
 		"./executors/host-command.ts": "./src/executors/host-command.ts",
-		"./executors/messaging-send-attribution": "./src/executors/messaging-send-attribution.ts",
-		"./executors/messaging-send-attribution.ts": "./src/executors/messaging-send-attribution.ts",
-		"./executors/messaging-send-recorder": "./src/executors/messaging-send-recorder.ts",
-		"./executors/messaging-send-recorder.ts": "./src/executors/messaging-send-recorder.ts",
 		"./executors/orpc": "./src/executors/orpc.ts",
 		"./executors/orpc.ts": "./src/executors/orpc.ts",
 		"./executors/orpc-args": "./src/executors/orpc-args.ts",
@@ -77,10 +74,6 @@
 		"./executors/orpc/protected-unique-write.ts": "./src/executors/orpc/protected-unique-write.ts",
 		"./executors/orpc/resolve-caller-user": "./src/executors/orpc/resolve-caller-user.ts",
 		"./executors/orpc/resolve-caller-user.ts": "./src/executors/orpc/resolve-caller-user.ts",
-		"./executors/sdk": "./src/executors/sdk.ts",
-		"./executors/sdk.ts": "./src/executors/sdk.ts",
-		"./executors/sdk-client-options": "./src/executors/sdk-client-options.ts",
-		"./executors/sdk-client-options.ts": "./src/executors/sdk-client-options.ts",
 		"./executors/ui-action": "./src/executors/ui-action.ts",
 		"./executors/ui-action.ts": "./src/executors/ui-action.ts",
 		"./executors/ui-action-description": "./src/executors/ui-action-description.ts",
@@ -90,9 +83,7 @@
 		"./lib/auth": "./src/lib/auth.ts",
 		"./lib/auth.ts": "./src/lib/auth.ts",
 		"./lib/filter-transform": "./src/lib/filter-transform.ts",
-		"./lib/filter-transform.ts": "./src/lib/filter-transform.ts",
-		"./lib/response": "./src/lib/response.ts",
-		"./lib/response.ts": "./src/lib/response.ts"
+		"./lib/filter-transform.ts": "./src/lib/filter-transform.ts"
 	},
 	"repository": "https://github.com/teamgbg/server-tool-executor-ts",
 	"publishConfig": {
