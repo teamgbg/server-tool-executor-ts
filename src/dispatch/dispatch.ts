@@ -5,7 +5,7 @@
 
 import { getLogger } from "@teamscala/tool-executor-substrate/configure.ts";
 import { executeHostCommand } from "../executors/host-command";
-import { executeSdkTool } from "../executors/sdk";
+import { executeSdkTool } from "@teamscala/tool-executor-adapters/executors/sdk.ts";
 import { executeUiActionTool } from "../executors/ui-action";
 import { executeOrpcProcedure } from "../executors/orpc";
 import { validateToolInput } from "@teamscala/formatters/validate-json-schema";

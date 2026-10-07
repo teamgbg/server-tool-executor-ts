@@ -9,7 +9,7 @@
 
 import { describe, expect, test } from "bun:test";
 import { executeHostCommand } from "../executors/host-command";
-import { executeSdkTool } from "../executors/sdk";
+import { executeSdkTool } from "@teamscala/tool-executor-adapters/executors/sdk.ts";
 import { executeTool, EXECUTORS } from "./dispatch";
 
 function handlerFor(key: string) {
