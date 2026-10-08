@@ -12,7 +12,7 @@ import { describe, expect, mock, test } from "bun:test";
 mock.module("@teamscala/db/registry/load-config", () => ({
 	loadRegistryConfig: async () => ({ platformOrganisationId: "organisation-id" }),
 }));
-mock.module("@teamscala/db-validation/validate-row", () => ({
+mock.module("@teamscala/row-validation/validate-row", () => ({
 	validateRow: (type: string, config: Record<string, unknown>) => {
 		if (type === "agent_invocation" && !("agent_id" in config)) {
 			throw new Error("agent_invocation requires agent_id");
