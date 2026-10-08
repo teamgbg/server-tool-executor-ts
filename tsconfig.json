@@ -29,8 +29,8 @@
 		}
 	},
 	"include": [
-		"src/**/*.ts",
-		"src/**/*.tsx"
+		"src/executors/**/*.ts",
+		"src/executors/**/*.tsx"
 	],
 	"exclude": [
 		"node_modules",
